@@ -34,7 +34,7 @@ class StepDefinitions extends ScalaDsl with EN with Assertions {
 
   Then("""^canvas will look like$""") { (rows: java.util.List[String]) =>
     val actualCanvas = canvas.getOrElse(throw new AssertionError("Canvas must be present"))
-    val readPixels = rows.asScala.map(_.split("""_""").filter(_.nonEmpty).map(_ (0))).toArray
+    val readPixels = rows.asScala.map(_.replace('_', ' ').split("").map(_ (0))).toArray
     val height = readPixels.length
     val width = readPixels(0).length
     val expectedPixels = Array.ofDim[Char](width, height)
@@ -46,7 +46,7 @@ class StepDefinitions extends ScalaDsl with EN with Assertions {
     val expectedCanvas = new Canvas(expectedPixels)
 
     assert(
-      deep(actualCanvas.pixels) === deep(expectedCanvas.pixels),
+      deep(actualCanvas.pixels) == deep(expectedCanvas.pixels),
       s"actual canvas $actualCanvas must be equal to $expectedCanvas"
     )
   }

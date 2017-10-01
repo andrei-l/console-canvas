@@ -1,6 +1,6 @@
 package al.challenge.drawing.system
 
-class Canvas(val pixels: Array[Array[Char]]) {
+case class Canvas(pixels: Array[Array[Char]]) {
 
   def this(width: Int, height: Int) =
     this(Array.fill[Char](width, height)(' '))
