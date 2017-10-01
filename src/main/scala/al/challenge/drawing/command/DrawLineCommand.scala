@@ -7,9 +7,10 @@ case class DrawLineCommand(x1: Int, y1: Int, x2: Int, y2: Int) extends BaseDrawi
   private def isStraightLine: Boolean =
     x1 == x2 || y1 == y2
 
-  override protected val doDraw: Pixels => Unit = pixels => for {
-    j <- math.min(y1, y2) to math.max(y1, y2)
-    i <- math.min(x1, x2) to math.max(x1, x2)
-  } pixels(i)(j) = 'x'
+  override protected val doDraw: Pixels => Unit = pixels =>
+    for {
+      i <- math.min(x1, x2) to math.max(x1, x2)
+      j <- math.min(y1, y2) to math.max(y1, y2)
+    } pixels(i)(j) = 'x'
 
 }

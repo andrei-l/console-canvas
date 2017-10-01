@@ -18,7 +18,7 @@ class DrawLineCommandSpec extends WordSpec with Assertions {
       assert(newCanvas.map(_.pixels).forall(pixels => pixels(1)(0) == 'x' && pixels(1)(1) == 'x'))
     }
 
-    "not draw not straight line" in {
+    "not draw curvy line" in {
       val newCanvas = command2.drawOnCanvas(Some(canvas))
       assert(newCanvas.forall(_.pixels sameElements canvas.pixels))
     }
