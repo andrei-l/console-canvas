@@ -2,7 +2,7 @@ package al.challenge.drawing.command
 
 case class DrawRectangleCommand(x1: Int, y1: Int, x2: Int, y2: Int) extends BaseDrawingCommand {
   override protected val customCommandFilter: Pixels => Boolean = pixels =>
-    isCoordinateWithingCanvas(pixels, x1, y1) && isCoordinateWithingCanvas(pixels, x2, y2)
+    isCoordinateWithinCanvas(pixels, x1, y1) && isCoordinateWithinCanvas(pixels, x2, y2)
 
   override protected val doDraw: Pixels => Unit = pixels => {
     for {

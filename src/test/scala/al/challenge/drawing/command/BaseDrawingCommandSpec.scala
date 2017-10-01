@@ -16,10 +16,10 @@ class BaseDrawingCommandSpec extends WordSpec with Assertions {
   "The BaseDrawingCommand" should {
     "check whether coordinate is within canvas" in {
       val pixels = Array.ofDim[Char](20, 4)
-      assert(SampleCommand.isCoordinateWithingCanvas(pixels, 0, 1))
-      assert(SampleCommand.isCoordinateWithingCanvas(pixels, 5, 1))
-      assert(!SampleCommand.isCoordinateWithingCanvas(pixels, -1, 1))
-      assert(!SampleCommand.isCoordinateWithingCanvas(pixels, 4, 4))
+      assert(SampleCommand.isCoordinateWithinCanvas(pixels, 0, 1))
+      assert(SampleCommand.isCoordinateWithinCanvas(pixels, 5, 1))
+      assert(!SampleCommand.isCoordinateWithinCanvas(pixels, -1, 1))
+      assert(!SampleCommand.isCoordinateWithinCanvas(pixels, 4, 4))
     }
 
     "deep copy 2d array" in {

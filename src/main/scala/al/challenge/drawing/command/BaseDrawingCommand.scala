@@ -22,7 +22,7 @@ private[command] trait BaseDrawingCommand extends DrawingCommand {
   protected val customCommandFilter: Pixels => Boolean
   protected val doDraw: Pixels => Unit
 
-  private[command] def isCoordinateWithingCanvas(pixels: Pixels, x: Int, y: Int): Boolean = {
+  private[command] def isCoordinateWithinCanvas(pixels: Pixels, x: Int, y: Int): Boolean = {
     x >= 0 && x < pixels.length && y >= 0 && y < pixels(0).length
   }
 
