@@ -2,6 +2,8 @@ package al.challenge.drawing.system
 
 import org.scalatest.{Assertions, WordSpec}
 
+import scala.language.implicitConversions
+
 class CanvasSpec extends WordSpec with Assertions {
 
   "The Canvas" should {
@@ -17,8 +19,12 @@ class CanvasSpec extends WordSpec with Assertions {
       val allRows: List[String] = startRow :: rows ::: endRow :: Nil
 
 
-      assert(allRows.mkString(System.lineSeparator()) === canvasString)
+      def newLine = System.lineSeparator()
+
+      val expectedCanvas = newLine + allRows.mkString(newLine) + newLine
+      assert(expectedCanvas === canvasString, s"built canvas $canvasString must be equal to expectedCanvas $expectedCanvas")
     }
 
   }
+
 }

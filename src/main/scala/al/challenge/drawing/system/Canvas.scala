@@ -32,7 +32,9 @@ object Canvas {
     }
 
     StringBuilder.newBuilder
+      .append(newLine)
       .append(startRow).append(newLine).append(sb).append(endRow)
+      .append(newLine)
       .toString()
   }
 }
