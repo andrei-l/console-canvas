@@ -7,6 +7,10 @@ class BaseDrawingCommandSpec extends WordSpec with Assertions {
 
   object SampleCommand extends BaseDrawingCommand {
     override def drawOnCanvas(canvas: Option[Canvas]): Option[Canvas] = canvas
+
+    override protected val customCommandFilter: SampleCommand.Pixels => Boolean = _ => true
+
+    override protected val doDraw: SampleCommand.Pixels => Unit = _ => ()
   }
 
   "The BaseDrawingCommand" should {
