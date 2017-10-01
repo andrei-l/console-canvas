@@ -17,19 +17,19 @@ class StringCommandResolverSpec extends WordSpec with Assertions {
     "resolve DrawLineCommand" in {
       val resolvedCommand = resolveCommand("L 1 2 6 2")
 
-      assert(resolvedCommand === Some(DrawLineCommand(1, 2, 6, 2)))
+      assert(resolvedCommand === Some(DrawLineCommand(0, 1, 5, 1)))
     }
 
     "resolve DrawRectangleCommand" in {
       val resolvedCommand = resolveCommand("R 16 1 20 3")
 
-      assert(resolvedCommand === Some(DrawRectangleCommand(16, 1, 20, 3)))
+      assert(resolvedCommand === Some(DrawRectangleCommand(15, 0, 19, 2)))
     }
 
     "resolve FillAreaCommand" in {
       val resolvedCommand = resolveCommand("B 10 3 o")
 
-      assert(resolvedCommand === Some(FillAreaCommand(10, 3, 'o')))
+      assert(resolvedCommand === Some(FillAreaCommand(9, 2, 'o')))
     }
 
     "resolve QuitDrawingCommand" in {
