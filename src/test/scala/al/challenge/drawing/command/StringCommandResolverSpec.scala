@@ -39,6 +39,9 @@ class StringCommandResolverSpec extends WordSpec with Assertions {
     }
 
     "fail to resolve invalid command" in {
+      assert(resolveCommand("C 0 1") === None)
+      assert(resolveCommand("C 1 0") === None)
+      assert(resolveCommand("C 0 0") === None)
       assert(resolveCommand("aa cc vv") === None)
       assert(resolveCommand("Q 1") === None)
       assert(resolveCommand("B 10 3 ff") === None)

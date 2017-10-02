@@ -16,7 +16,8 @@ class StringCommandResolver extends CommandResolver[String] {
   override def resolveCommand(commandString: String): Option[DrawingCommand] = {
     Try {
       commandString match {
-        case CreateCanvasCommandPattern(width, height) => CreateCanvasCommand(parseInt(width), parseInt(height))
+        case CreateCanvasCommandPattern(width, height) if parseInt(width) > 0 && parseInt(height) > 0 =>
+          CreateCanvasCommand(parseInt(width), parseInt(height))
         case DrawLineCommandPattern(x1, y1, x2, y2) => DrawLineCommand(x1, y1, x2, y2)
         case DrawRectangleCommandPattern(x1, y1, x2, y2) => DrawRectangleCommand(x1, y1, x2, y2)
         case FillAreaCommandPattern(x, y, colour) if colour.length == 1 => FillAreaCommand(x, y, colour(0))
