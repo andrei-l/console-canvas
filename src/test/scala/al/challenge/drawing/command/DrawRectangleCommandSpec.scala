@@ -7,7 +7,7 @@ class DrawRectangleCommandSpec extends WordSpec with Assertions {
   val command = DrawRectangleCommand(0, 0, 2, 2)
   val canvas = new Canvas(3, 3)
 
-  "The DrawRecCommand" should {
+  "The DrawRectangleCommand" should {
 
     "draw rectangle" in {
       val newCanvas = command.drawOnCanvas(Some(canvas))

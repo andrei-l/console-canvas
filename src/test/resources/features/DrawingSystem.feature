@@ -39,3 +39,26 @@ Feature: Drawing System
       | _____x_________xxxxx |
       | _____x______________ |
 
+  Scenario: Should fill area not covered by any element
+    Given empty canvas 20x4
+    When a drawing command L 1 2 6 2 is issued
+    And a drawing command L 6 3 6 4 is issued
+    And a drawing command R 16 1 20 3 is issued
+    And a drawing command B 10 3 o is issued
+    Then canvas will look like
+      | oooooooooooooooxxxxx |
+      | xxxxxxooooooooox___x |
+      | _____xoooooooooxxxxx |
+      | _____xoooooooooooooo |
+
+  Scenario: Should fill area covered by lines
+    Given empty canvas 20x4
+    When a drawing command L 1 2 6 2 is issued
+    And a drawing command L 6 3 6 4 is issued
+    And a drawing command R 16 1 20 3 is issued
+    And a drawing command B 6 3 f is issued
+    Then canvas will look like
+      | _______________xxxxx |
+      | ffffff_________x___x |
+      | _____f_________xxxxx |
+      | _____f______________ |
