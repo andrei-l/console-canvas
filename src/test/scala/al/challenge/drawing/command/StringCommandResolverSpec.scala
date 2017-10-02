@@ -32,6 +32,18 @@ class StringCommandResolverSpec extends WordSpec with Assertions {
       assert(resolvedCommand === Some(FillAreaCommand(9, 2, 'o')))
     }
 
+    "resolve FillAreaCommand with special char" in {
+      val resolvedCommand = resolveCommand("B 10 3 .")
+
+      assert(resolvedCommand === Some(FillAreaCommand(9, 2, '.')))
+    }
+
+    "resolve FillAreaCommand with another special char" in {
+      val resolvedCommand = resolveCommand("B 10 3 ~")
+
+      assert(resolvedCommand === Some(FillAreaCommand(9, 2, '~')))
+    }
+
     "resolve QuitDrawingCommand" in {
       val resolvedCommand = resolveCommand("Q")
 

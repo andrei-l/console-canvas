@@ -10,7 +10,7 @@ class StringCommandResolver extends CommandResolver[String] {
   private final val CreateCanvasCommandPattern = """C (\d+) (\d+)""".r
   private final val DrawLineCommandPattern = """L (\d+) (\d+) (\d+) (\d+)""".r
   private final val DrawRectangleCommandPattern = """R (\d+) (\d+) (\d+) (\d+)""".r
-  private final val FillAreaCommandPattern = """B (\d+) (\d+) (\w)""".r
+  private final val FillAreaCommandPattern = """B (\d+) (\d+) (.)""".r
   private final val QuitDrawingCommandPattern = """Q""".r
 
   override def resolveCommand(commandString: String): Option[DrawingCommand] = {
